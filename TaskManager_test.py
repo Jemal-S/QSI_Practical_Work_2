@@ -7,10 +7,24 @@ def setup_and_teardown():
     yield
     tasks.clear()
 
-def test_add_task():
-    add_task("Buy groceries")
+#Owasp Input validation standard tests
+def test_add_task_valid_input():
+    response = add_task("Buy groceries")
+    assert response == "Task added successfully."
     assert len(tasks) == 1
     assert tasks[0]["task"] == "Buy groceries"
+
+def test_add_task_invalid_characters():
+    with pytest.raises(ValueError, match="Task name contains invalid characters."):
+        add_task("Buy groceries <script>alert('hack');</script>")
+
+def test_add_task_length_check():
+    with pytest.raises(ValueError, match="Task name must be between 1 and 255 characters."):
+        add_task("")  # Too short
+    with pytest.raises(ValueError, match="Task name must be between 1 and 255 characters."):
+        add_task("A" * 256)  # Too long
+
+
 
 def test_view_tasks():
     add_task("Buy groceries")
