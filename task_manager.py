@@ -1,7 +1,32 @@
+import re
+
+ALLOWED_CHARACTERS = re.compile("^[a-zA-Z0-9\s,.'-]+$")  # Letters, digits, spaces, and common punctuation
+
+MAX_TASK_LENGTH = 255
+MIN_TASK_LENGTH = 1  
+
 tasks = []
 
-def add_task(task_name):
-    tasks.append({"task": task_name, "status": "pending"})
+def add_task(task_name: str):
+    if not isinstance(task_name, str):
+        raise ValueError("Task name must be a string.")
+    
+
+    task_length = len(task_name)
+    if task_length < MIN_TASK_LENGTH or task_length > MAX_TASK_LENGTH:
+        raise ValueError(f"Task name must be between {MIN_TASK_LENGTH} and {MAX_TASK_LENGTH} characters.")
+    
+    # Validate task description using allow characters list
+    if not ALLOWED_CHARACTERS.match(task_name):
+        raise ValueError("Task name contains invalid characters.")
+
+    # If the validation passes, add the task to the list of tasks
+    task = {
+        "task": task_name,
+        "status": "pending"
+    }
+    tasks.append(task)
+    return "Task added successfully."
 
 def view_tasks():
     if not tasks:
