@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+    <testsuite name="pytest" errors="0" failures="0" skipped="0" tests="10" time="0.233" timestamp="2025-01-03T12:48:02.612743+00:00" hostname="JSMB-LAPPY">
+        <testcase classname="TaskManager_test" name="test_add_task_valid_input" time="0.002" />
+        <testcase classname="TaskManager_test" name="test_add_task_invalid_characters" time="0.002" />
+        <testcase classname="TaskManager_test" name="test_add_task_length_check" time="0.002" />
+        <testcase classname="TaskManager_test" name="test_view_tasks" time="0.003" />
+        <testcase classname="TaskManager_test" name="test_update_task_status" time="0.002" />
+        <testcase classname="TaskManager_test" name="test_update_task_status_not_found" time="0.001" />
+        <testcase classname="TaskManager_test" name="test_delete_task" time="0.002" />
+        <testcase classname="TaskManager_test" name="test_delete_task_not_found" time="0.002" />
+        <testcase classname="TaskManager_test" name="test_search_task" time="0.002" />
+        <testcase classname="TaskManager_test" name="test_search_task_not_found" time="0.002" />
+    </testsuite>
+</testsuites>
